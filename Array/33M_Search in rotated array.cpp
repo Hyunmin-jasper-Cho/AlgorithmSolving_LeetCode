@@ -1,8 +1,3 @@
-/*
-  Search inflection value first, 
-  then do binary search of each side
-*/
-
 class Solution {
 public:
     int search(vector<int>& nums, int target) { 
@@ -50,11 +45,8 @@ public:
             }
         }
         
-        int ls = bs(nums, target, 0, inf_idx - 1);
-        int rs = bs(nums, target, inf_idx, n - 1);
-        
-        if (ls == rs) return -1;
-        return (ls > rs) ? ls : rs;
+        return (target >= nums[0]) ? (bs(nums, target, 0, inf_idx - 1)) : (bs(nums, target, inf_idx, n - 1));
+         
     }
     
 private:
